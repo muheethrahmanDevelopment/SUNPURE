@@ -28,7 +28,81 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+<style>
 
+.swing {
+    animation: swing ease-in-out 1s infinite alternate;
+    transform-origin: center -20px;
+    float:left;
+   
+}
+.swing img {
+    
+    display: block;
+}
+.swing:after{
+    content: '';
+    position: absolute;  
+    width: 20px; height: 20px;  
+    
+    top: -10px; left: 50%;
+    z-index: 0;
+    border-bottom: none;
+    border-right: none;
+    transform: rotate(45deg);
+}
+/* nail */
+.swing:before{
+    content: '';
+    position: absolute;
+    width: 5px; height: 5px;
+    top: -14px;left: 54%;
+    z-index: 5;
+    border-radius: 50% 50%;
+    background: #000;
+}
+ 
+@keyframes swing {
+    0% { transform: rotate(3deg); }
+    100% { transform: rotate(-3deg); }
+}
+#stars > i {
+  position: absolute;
+    background: #fff;
+    border-radius: 50%;
+
+    box-shadow: 0 0 5px #FFD700, 
+                0 0 15px#FFD700, 
+                0 0 25px#FFD700;
+    
+   animation: blink-animation 1s steps(5, start) infinite;
+        -webkit-animation: blink-animation 1s steps(5, start) infinite;
+      }
+      @keyframes blink-animation {
+        to {
+          visibility: hidden;
+        }
+      }
+      @-webkit-keyframes blink-animation {
+        to {
+          visibility: hidden;
+        }
+}
+.moon{
+  background-color:red;
+  position:absolute;
+  margin:100px;
+  top:100px;
+  bottom:0;
+  left:0;
+  right:0;
+  background-color:transparent;
+  height:100px;
+  width:100px;
+  border-radius:50%;
+  box-shadow:-10px 2px 3px 2px #FFD700;
+}
+</style>
   
 </head>
 
@@ -66,6 +140,7 @@
     </div>
   <!-- ======= Top Bar ======= -->
   <div id="topbar" class="fixed-top d-flex align-items-center ">
+
     <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">www.sunpure.in</a>
@@ -79,7 +154,9 @@
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center ">
+
     <div class="container d-flex align-items-center justify-content-between">
+
 
       <h1 class="logo"><a href="index.html"> <img src="assets/img/Capture-removebg-preview.png"width="80rem">    </a></h1>
       
@@ -101,6 +178,41 @@
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-cntent-center align-items-center">
+<figure class="swing">
+  <img src="assets/img/www.png" width="200" >
+</figure> 
+<section id="stars">
+<div class="moon"></div>
+</section>
+
+    <script type="text/javascript">
+
+      function stars() {
+        const count = 300;
+        const stars = document.getElementById('stars');
+        var i = 0;
+
+        while(i < count) {
+          const star = document.createElement('i');
+          const x = Math.floor(Math.random() * window.innerWidth)
+          const y = Math.floor(Math.random() * window.innerHeight)
+
+          const size = Math.random() * 5;
+          star.style.left = x+'px';
+          star.style.top = y+'px';
+          star.style.height = 1+size+'px';
+          star.style.width = 1+size+'px';
+
+          const duration = Math.random() * 2;
+          star.style.animationDuration = 2+duration+'s';
+
+
+          stars.appendChild(star);
+          i++
+        }
+      }
+      stars();
+    </script>
     <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
 
       <!-- Slide 1 -->
@@ -133,6 +245,9 @@
       </a>
 
     </div>
+<figure class="swing">
+  <img src="assets/img/aab.png" width="200" >
+</figure> 
   </section><!-- End Hero -->
 
   <main id="main">
